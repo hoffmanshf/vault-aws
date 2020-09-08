@@ -2,12 +2,12 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Mappings:
   RegionMap:
-      us-west-2:
-        vault: ami-08f0e437c837af151
-        consul: ami-053de2db717a94e39
-      us-east-1:
-        vault: ami-0c4b73c6fd3189b3a
-        consul: ami-09f7bee50e46a3c28
+      us-east-2:
+        vault: ami-096e2e22a16aa5af1
+        consul: ami-0f87f99be9d9fe8b3
+      # us-east-1:
+      #   vault: ami-0c4b73c6fd3189b3a
+      #   consul: ami-09f7bee50e46a3c28
 Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -42,6 +42,7 @@ Parameters:
   FQDN:
     Type: String
     Description: "Example: vault.hashidemos.io"
+    Default: 'ciam.getpitstop.io'
   ClusterZones:
     Type: List<AWS::EC2::AvailabilityZone::Name>
     Description: "Example: us-east-1a, us-east-1b, us-east-1c"
@@ -616,7 +617,7 @@ Resources:
       InstanceInitiatedShutdownBehavior: stop
       IamInstanceProfile: !Ref VaultInstanceProfile
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", vault]
-      InstanceType: t2.medium
+      InstanceType: t2.micro
       KeyName: !Ref SSHKeyName
       Monitoring: 'false'
       Tags:
@@ -716,7 +717,7 @@ Resources:
       InstanceInitiatedShutdownBehavior: stop
       IamInstanceProfile: !Ref VaultInstanceProfile
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", vault]
-      InstanceType: t2.medium
+      InstanceType: t2.micro
       KeyName: !Ref SSHKeyName
       Monitoring: 'false'
       Tags:
@@ -816,7 +817,7 @@ Resources:
       InstanceInitiatedShutdownBehavior: stop
       IamInstanceProfile: !Ref VaultInstanceProfile
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", vault]
-      InstanceType: t2.medium
+      InstanceType: t2.micro
       KeyName: !Ref SSHKeyName
       Monitoring: 'false'
       Tags:
@@ -916,7 +917,7 @@ Resources:
       InstanceInitiatedShutdownBehavior: stop
       IamInstanceProfile: !Ref VaultInstanceProfile
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", consul]
-      InstanceType: t2.medium
+      InstanceType: t2.micro
       KeyName: !Ref SSHKeyName
       Monitoring: 'false'
       Tags:
@@ -1034,7 +1035,7 @@ Resources:
       InstanceInitiatedShutdownBehavior: stop
       IamInstanceProfile: !Ref VaultInstanceProfile
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", consul]
-      InstanceType: t2.medium
+      InstanceType: t2.micro
       KeyName: !Ref SSHKeyName
       Monitoring: 'false'
       Tags:
@@ -1106,7 +1107,7 @@ Resources:
       InstanceInitiatedShutdownBehavior: stop
       IamInstanceProfile: !Ref VaultInstanceProfile
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", consul]
-      InstanceType: t2.medium
+      InstanceType: t2.micro
       KeyName: !Ref SSHKeyName
       Monitoring: 'false'
       Tags:
@@ -1178,7 +1179,7 @@ Resources:
       InstanceInitiatedShutdownBehavior: stop
       IamInstanceProfile: !Ref VaultInstanceProfile
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", consul]
-      InstanceType: t2.medium
+      InstanceType: t2.micro
       KeyName: !Ref SSHKeyName
       Monitoring: 'false'
       Tags:
@@ -1250,7 +1251,7 @@ Resources:
       InstanceInitiatedShutdownBehavior: stop
       IamInstanceProfile: !Ref VaultInstanceProfile
       ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", consul]
-      InstanceType: t2.medium
+      InstanceType: t2.micro
       KeyName: !Ref SSHKeyName
       Monitoring: 'false'
       Tags:
